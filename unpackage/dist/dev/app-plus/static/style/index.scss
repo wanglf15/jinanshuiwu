@@ -1,0 +1,126 @@
+	/* #ifndef APP-NVUE */
+	/deep/ .u-border-bottom::after {
+		border: 0;
+	}
+
+	page {
+		background-color: #fff;
+	}
+
+	// 底部评论
+	.footer {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100rpx;
+		line-height: 90rpx;
+		background-color: #FFFFFF;
+		border-top: 1px solid #EEEEEE;
+		padding-left: 30rpx;
+		box-sizing: border-box;
+		z-index: 99;
+
+		button {
+			width: 70% !important;
+			height: 70rpx;
+			line-height: 70rpx;
+			font-size: 28rpx;
+			text-align: left;
+			border-radius: 10rpx;
+			vertical-align: middle;
+			border-color: #EEEEEE;
+			color: #999999;
+		}
+
+		.edit {
+			display: inline-block;
+			margin-left: 50rpx;
+			text-align: right;
+
+			.u-icon {
+				margin-right: 30rpx;
+				vertical-align: middle;
+			}
+		}
+	}
+
+	// 转发按钮
+	.u-slot-content {
+		position: relative;
+
+		.u-slot-right {
+			position: absolute;
+			right: 30rpx;
+
+			.uicon-zhuanfa {
+				font-size: 36rpx !important;
+			}
+		}
+	}
+
+	/* 底部分享 */
+	.share-pop {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		width: 100%;
+
+		.share-item {
+			padding-top: 30rpx;
+			text-align: center;
+
+			image {
+				display: block;
+				width: 80rpx;
+				height: 80rpx;
+				margin: 0 auto;
+				margin-bottom: 10rpx;
+			}
+		}
+	}
+
+	.comment {
+		border-top: 1px solid #EEEEEE;
+		padding-top: 40rpx;
+
+		.com-title {
+			position: relative;
+			font-weight: 700;
+			font-size: 36rpx;
+			padding-left: 20rpx;
+
+			&::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 5rpx;
+				width: 8rpx;
+				height: 40rpx;
+				background-color: $mytheme-color;
+			}
+		}
+	}
+
+	.cancle {
+		width: 100%;
+		height: 100rpx;
+		line-height: 100rpx;
+		text-align: center;
+		font-size: 32rpx;
+		border-top: 1px solid #EEEEEE;
+		margin-top: 30rpx;
+	}
+
+	.red {
+		color: #ff0000;
+	}
+
+	.defaultColor {
+		color: #333333;
+	}
+
+	.dfC {
+		color: #CCCCCC;
+	}
+	/* #endif */

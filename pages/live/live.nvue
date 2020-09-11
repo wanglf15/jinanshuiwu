@@ -1,0 +1,379 @@
+<template>
+	<div>
+		<jkj-video ref="videoView1" class="yincang" style="position: fixed; top: 0; left: 0; z-index: 999; width: 760rpx;"></jkj-video>
+		<list style="margin-top: 220px; margin-bottom: 120rpx;" :bounce="false">
+			<cell class="cellitems" v-for="(item, index) in lists" :key="index" style="flex-direction: row;">
+				<div class="avater" style="width: 80rpx; height: 80rpx; background-color: #CCCCCC; border-radius: 10rpx;">
+					<image :src="item.avatar" mode="aspectFill" style="width: 80rpx; height: 80rpx; border-radius: 10rpx;"></image>
+				</div>
+				<div class="contents" style="flex: 1;">
+					<div class="nickName" style="flex: 1; flex-direction: row; justify-content: space-between;">
+						<text class="name">{{ item.nickname }}</text>
+						<text class="pubtime">{{ item.create_time }}</text>
+					</div>
+					<div class="comments">
+						<text class="coms" style="color: #666666;">{{ item.text }}</text>
+					</div>
+				</div>
+			</cell>
+			<cell>
+				<view class="" style="width: 750rpx; height: 100rpx;" v-if="show">
+					<text style="font-size: 28rpx; line-height: 100rpx; text-align: center;">{{ txt }}</text>
+				</view>
+			</cell>
+		</list>
+		
+		<view class="foot" style="width: 760rpx; height: 120rpx; position: fixed; bottom: 0;">
+			<input class="inp" v-model="val" type="text" value="" @blur="inpblur" placeholder="我来说两句···" />
+			<view class="pub" @click="pubCom">
+				<uni-icons type="paperplane-filled" color="#fff" size="21"></uni-icons>
+			</view>
+		</view>
+	</div>
+</template>
+
+<script>
+	var jkjsdkwx = uni.requireNativePlugin('JKJ-VideoView');
+	export default {
+		data() {
+			return {
+				jsCallback: null,
+				lists: [],
+				val: '',
+				Liveurl: null,
+				title: null,
+				liveId: null,
+				show: false,
+				pageIndex: 1,
+				txt: '加载中···'
+			}
+		},
+		// onBackPress(e) {
+		//    if (e.from == 'backbutton') {
+		//     var videoView = this.$refs.videoView1;
+		// 	videoView.stopFullScreenPlay();
+		//     return true; //阻止默认返回行为
+		//    }
+		//   },
+		onLoad(option) {
+			this.getLiveList(option.id);
+			
+		},
+		mounted() {
+			// var videoView = this.$refs.videoView1;
+			// videoView.ychzh()
+		},
+		onReachBottom() {
+			this.pageIndex++;
+			this.show = true
+			this.getMoreComment()
+		},
+		methods: {
+			// 获取直播房间列表
+			async getLiveList(id) {
+				await uni.request({
+					method: 'GET',
+					url: 'https://tougao.goodclouds.cn/api/live/getLiveDetail?id=' + id,
+					success: (res) => {
+						console.log(res)
+						const data = res.data.data
+						// if(res.data.result[0].rtmpurl !== '') {
+							this.Liveurl = data.rtmpurl
+						// } else {
+						// 	this.Liveurl = res.data.result[0].playbackurl
+						// } 
+						this.title = data.title
+						this.liveId = data.id
+						this.getCommentsList(data.id)
+						if (data.status == 2) {
+							this.show = true
+							uni.showToast({
+								title: '直播已结束'
+							})
+							return
+						}
+						if (data.status == 0) {
+							this.show = true
+							uni.showToast({
+								title: '直播未开始'
+							})
+							return
+						}
+						this.onClickPlay()
+					},
+					fail: (err) => {
+						console.log(err)
+					}
+				})
+			},
+			// 获取评论列表
+			async getCommentsList(id) {
+				await uni.request({
+					method: 'GET',
+					url: 'https://tougao.goodclouds.cn/api/comment/getComment',
+					data: {
+						cid: id,
+						index: this.pageIndex,
+						length: 10,
+						type: 'live'
+					},
+					success: (res) => {
+						const data = res.data.result
+						data.map((el,index) => {
+							data[index].avatar = 'https://tougao.goodclouds.cn' + el.avatar
+						})
+						this.lists = res.data.result
+					}
+				})
+			},
+			// 触底加载更多
+			async getMoreComment () {
+				await uni.request({
+					method: 'GET',
+					url: 'https://tougao.goodclouds.cn/api/comment/getComment',
+					data: {
+						cid: this.liveId,
+						index: this.pageIndex,
+						length: 10,
+						type: 'live'
+					},
+					success: (res) => {
+						const data = res.data.result
+						data.map((el,index) => {
+							data[index].avatar = 'https://tougao.goodclouds.cn' + el.avatar
+						})
+						if (data.length < 10) {
+							setTimeout(() => {
+								this.txt = '没有更多了'
+								this.lists.push(...data)
+							},800)
+						} else {
+							this.lists.push(...data)
+						}
+					}
+				})
+			},
+			// 评论
+			async pubCom() {
+				const token = uni.getStorageSync('isLogin').token
+				console.log(token)
+				if (!this.val || this.val.replace(/\s/g,'').length == 0) {
+					uni.showToast({
+						title: '请输入评论内容',
+						icon: 'none'
+					})
+					return
+				}
+				await uni.request({
+					method: 'POST',
+					url: 'https://tougao.goodclouds.cn/api/comment/add?token=' + token,
+					data: {
+						cid: this.liveId,
+						text: this.val,
+						type: 'live'
+					},
+					success: (res) => {
+						this.pageIndex = 1;
+						this.getCommentsList(this.liveId)
+					}
+				})
+				var videoView = this.$refs.videoView1;
+				videoView.addDanmaku(this.val);
+				this.val = ''
+			},
+			onClickPlay() {
+				var that = this
+				this.jsCallback = function(res) {
+					if (res.type == "onStartFullScreenPlay") {
+						//开始全屏播发回调
+						uni.showToast({
+							title: "全屏"
+						})
+					} else if (res.type == "onStopFullScreenPlay") {
+						//退出全屏回调
+						uni.showToast({
+							title: "退出全屏"
+						})
+					} else if (res.type == "play_callback") {
+						uni.showToast({
+							title: "播放的集数：" + res.data.vod_id
+						})
+					} else if (res.type == "onclick") {
+						//所有点击回调
+						if (res.data.event == "sus_advert") { //点击暂停广告回调
+							uni.showToast({
+								title: "你点击了广告！"
+							})
+						} else if (res.data.event == "Close_advert") {
+							uni.showToast({
+								title: "点击了关闭广告"
+							})
+							//关闭视频广告
+							var videoView = that.$refs.videoView1;
+							videoView.Close_tpadvert();
+
+						} else if (res.data.event == "Onclick_advert") {
+							uni.showToast({
+								title: "跳转广告"
+							})
+						} else if (res.data.event == "live_zt") {
+							//直播源控制双击暂停，请不要删除否则无法暂停视频
+							var videoView = that.$refs.videoView1;
+							videoView.pause();
+						}
+					} else if (res.type == "onPlayEvent" || res.type == "onLivePlayEvent") {
+						// console.log(res.type)
+						if (res.data.event == 2006) {
+							console.log("播发结束");
+						} else if (res.data.event == 2004) {
+							console.log("开始播发");
+						} else if (res.data.event == 2013) {
+							console.log("播放器已准备完成，可以播放");
+						} else if (res.data.event == 2005) {
+							//发送弹幕
+							var videoView = that.$refs.videoView1;
+							videoView.addDanmakus([that.lists[0].contents]);
+
+							//结束 
+							that.jindu = res.data.progress
+							that.zongjd = res.data.duration
+							that.jindubfb = parseInt((that.jindu / that.zongjd) * 100)
+							//console.log("播放器进度");
+							// console.log(res.data);
+						}
+					}
+				}
+				var videoView = this.$refs.videoView1;
+				//设置回调函数
+				videoView.setJsCallback(this.jsCallback);
+				// //设置播放源开始播放
+				videoView.play([{
+						// appid:"_UNI_DBE8F1C",
+						// title: this.liveList[0].title,
+						title: this.title,
+						title1: this.title,
+						// videoId:{
+						// 	fileId: this.liveId 
+						// },
+						url: this.Liveurl,
+						// qualityName:'原画',
+						// multiURLs:[
+						// 	{
+						// 		url: 'http://vfx.mtime.cn/Video/2019/02/04/mp4/190204084208765161.mp4',
+						// 		qualityName:'原画',
+						// 	},
+						// ]
+					},
+
+				], 0);
+			},
+			onClickPause() {
+				//暂停
+				this.$refs.videoView1.pause();
+			},
+			onClickResume() {
+				//恢复播放
+				this.$refs.videoView1.resume();
+			},
+			onClickDownload() {
+				var downloadPath = "/";
+				var downloadUrl = "https://cn1.18787000118.com/hls/20200308/9611261ef6e06e699765f7bc38071d4c/index.m3u8";
+				//下载文件
+				jkjsdkwx.startDownloadUrl(downloadPath, downloadUrl, function(res) {
+					console.log(res);
+				});
+				//停止下载任务
+				//jkjsdkwx.stopDownload(downloadUrl);
+				//停止所有下载
+				//jkjsdkwx.stopAllDownload();
+				//删除文件
+				//jkjsdkwx.deleteDownloadFile(downloadPath);
+			},
+			onClickDownload1() {
+				var videoView = this.$refs.videoView1;
+				videoView.seekTo(25); //这个是int
+			},
+			// setBrightness(e) {
+			// 	console.log(e)
+			// 	jkjsdkwx.setBrightness(e);
+			// },
+			// getBrightness() {
+			// 	jkjsdkwx.getBrightness(function(res) {
+			// 		console.log("获取亮度", res)
+			// 	});
+			// }
+		},
+		
+	}
+</script>
+
+
+<style scoped>
+	
+	.yincang {
+		height: 220px;
+	}
+	
+	.cellitems {
+		padding-left: 20rpx;
+		padding-top: 20rpx;
+		padding-bottom: 20rpx;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		border-bottom-color: #EEEEEE;
+	}
+
+	.contents {
+		padding: 0 20rpx;
+	}
+
+	.nickName {
+		margin-bottom: 10rpx;
+	}
+
+	.pubtime {
+		color: #666666;
+		font-size: 24rpx;
+	}
+
+	.name {
+		font-size: 28rpx;
+	}
+
+	.coms {
+		font-size: 28rpx;
+		width: 600rpx;
+	}
+
+	.foot {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 30rpx;
+		border-top-width: 1px;
+		border-top-style: solid;
+		border-top-color: #EEEEEE;
+		background-color: #FFFFFF;
+	}
+
+	.inp {
+		flex: 1;
+		height: 70rpx;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #CCCCCC;
+		border-radius: 10rpx;
+		padding-left: 20rpx;
+		font-size: 28rpx;
+	}
+
+	.pub {
+		justify-content: center;
+		align-items: center;
+		width: 70rpx;
+		height: 70rpx;
+		border-radius: 50%;
+		background-color: #00919F;
+		margin-left: 20rpx;
+	}
+</style>

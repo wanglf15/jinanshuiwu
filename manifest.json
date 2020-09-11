@@ -1,0 +1,232 @@
+{
+    "name" : "济南水务",
+    "appid" : "__UNI__DBE8F1C",
+    "description" : "济南水务集团是国家大型供水企业，承担着济南市主城区、东区、西区等范围内的供水服务工作，保障济南市城市发展和居民生活用水安全。",
+    "versionName" : "2.0.6",
+    "versionCode" : 127,
+    "transformPx" : false,
+    "app-plus" : {
+        "usingComponents" : true,
+        "nvueCompiler" : "uni-app",
+        "splashscreen" : {
+            "alwaysShowBeforeRender" : true,
+            "waiting" : false,
+            "autoclose" : true,
+            "delay" : 0
+        },
+        /* 模块配置 */
+        "modules" : {
+            "Push" : {},
+            "VideoPlayer" : {},
+            "Maps" : {},
+            "Webview-x5" : {},
+            "OAuth" : {},
+            "Share" : {},
+            "UIWebview" : {},
+            "Payment" : {}
+        },
+        "kernel" : {
+            "ios" : "WKWebview" //或者 "UIWebview"  
+        },
+        "safearea" : {
+            "bottom" : {
+                "offset" : "none"
+            }
+        },
+        /* 应用发布信息 */
+        "distribute" : {
+            /* android打包配置 */
+            "android" : {
+                "permissions" : [
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+                    "<uses-permission android:name=\"android.permission.INSTALL_PACKAGES\"/>",
+                    "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.REQUEST_INSTALL_PACKAGES\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+                ],
+                "schemes" : [ "wxac38543fac26c87a" ],
+                "targetSdkVersion" : 26,
+                "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ]
+            },
+            /* ios打包配置 */
+            "ios" : {
+                "apple" : {
+                    "urltypes" : [
+                        {
+                            "urlidentifier" : "www.jnwater.com",
+                            "urlschemes" : [ "wxac38543fac26c87a" ]
+                        }
+                    ],
+                    "urlschemewhitelist" : [ "iosamap", "baidumap", "gaodemap" ]
+                },
+                "privacyDescription" : {
+                    "NSPhotoLibraryUsageDescription" : "上传用户头像",
+                    "NSPhotoLibraryAddUsageDescription" : "保存截图",
+                    "NSLocationWhenInUseUsageDescription" : "获取当地天气和营业网点位置",
+                    "NSLocationAlwaysAndWhenInUseUsageDescription" : "获取当地天气和营业网点位置"
+                }
+            },
+            /* SDK配置 */
+            "sdkConfigs" : {
+                "ad" : {},
+                "share" : {
+                    "weixin" : {
+                        "appid" : "wxac38543fac26c87a",
+                        "UniversalLinks" : "https://www.jnwater.com.cn/app/"
+                    }
+                },
+                "maps" : {
+                    "amap" : {
+                        "appkey_ios" : "a8df1bf1ff78834f5412669bc72dccf2",
+                        "appkey_android" : "34516c1158f5447ec15b98973e5f6040"
+                    }
+                },
+                "payment" : {
+                    "alipay" : {
+                        "__platform__" : [ "ios", "android" ]
+                    },
+                    "weixin" : {
+                        "__platform__" : [ "ios", "android" ],
+                        "appid" : "wxac38543fac26c87a",
+                        "UniversalLinks" : "https://www.jnwater.com.cn/app/"
+                    }
+                },
+                "push" : {},
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wxac38543fac26c87a",
+                        "appsecret" : "591ffc8ccb981ccbf5a10eee2433f2c6",
+                        "UniversalLinks" : "https://www.jnwater.com.cn/app/"
+                    },
+                    "apple" : {}
+                }
+            },
+            "splashscreen" : {
+                "android" : {
+                    "hdpi" : "unpackage/dist/build/app-plus/static/img/qidong/qidong_640-960.png",
+                    "xhdpi" : "unpackage/dist/build/app-plus/static/img/qidong/qidong_640-1136.png",
+                    "xxhdpi" : "unpackage/dist/build/app-plus/static/img/qidong/qidong_1080-1920.png"
+                },
+                "ios" : {
+                    "iphone" : {
+                        "portrait-896h@3x" : "Z:/设计/济南水务/APP/开机画面/新白底/1242-2688.png",
+                        "landscape-896h@3x" : "",
+                        "portrait-896h@2x" : "Z:/设计/济南水务/APP/开机画面/新白底/828-1792.png",
+                        "iphonex" : "Z:/设计/济南水务/APP/开机画面/新白底/1125-2436.png",
+                        "retina55" : "Z:/设计/济南水务/APP/开机画面/新白底/1242-2208.png",
+                        "retina47" : "Z:/设计/济南水务/APP/开机画面/新白底/750-1334.png",
+                        "retina40" : "Z:/设计/济南水务/APP/开机画面/新白底/640-1136.png",
+                        "retina35" : "Z:/设计/济南水务/APP/开机画面/新白底/640-960.png"
+                    },
+                    "ipad" : {
+                        "portrait-1366h@2x" : "Z:/设计/济南水务/APP/开机画面/新白底/2048-2732.png",
+                        "portrait-1194h@2x" : "Z:/设计/济南水务/APP/开机画面/新白底/1668-2388.png",
+                        "portrait-1112h@2x" : "Z:/设计/济南水务/APP/开机画面/新白底/1668-2224.png",
+                        "portrait-retina7" : "Z:/设计/济南水务/APP/开机画面/新白底/1536-2048.png",
+                        "portrait7" : "Z:/设计/济南水务/APP/开机画面/新白底/768-1024.png"
+                    }
+                }
+            },
+            "icons" : {
+                "android" : {
+                    "hdpi" : "unpackage/res/icons/72x72.png",
+                    "xhdpi" : "unpackage/res/icons/96x96.png",
+                    "xxhdpi" : "unpackage/res/icons/144x144.png",
+                    "xxxhdpi" : "unpackage/res/icons/192x192.png"
+                },
+                "ios" : {
+                    "appstore" : "unpackage/res/icons/1024x1024.png",
+                    "ipad" : {
+                        "app" : "unpackage/res/icons/76x76.png",
+                        "app@2x" : "unpackage/res/icons/152x152.png",
+                        "notification" : "unpackage/res/icons/20x20.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png",
+                        "proapp@2x" : "unpackage/res/icons/167x167.png",
+                        "settings" : "unpackage/res/icons/29x29.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "spotlight" : "unpackage/res/icons/40x40.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png"
+                    },
+                    "iphone" : {
+                        "app@2x" : "unpackage/res/icons/120x120.png",
+                        "app@3x" : "unpackage/res/icons/180x180.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png",
+                        "notification@3x" : "unpackage/res/icons/60x60.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "settings@3x" : "unpackage/res/icons/87x87.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
+                        "spotlight@3x" : "unpackage/res/icons/120x120.png"
+                    }
+                }
+            }
+        },
+        "nativePlugins" : {
+            "JKJ-VideoView" : {
+                "__plugin_info__" : {
+                    "name" : "腾讯云播放器SDK",
+                    "description" : "支持在nvue中使用的腾讯云视频播放器，支持市面上主流视频格式与直播流，支持多清晰度与倍速",
+                    "platforms" : "Android,iOS",
+                    "url" : "https://ext.dcloud.net.cn/plugin?id=1067",
+                    "android_package_name" : "com.jnwater.app",
+                    "ios_bundle_id" : "com.jnwater.app",
+                    "isCloud" : true,
+                    "bought" : 1,
+                    "pid" : "1067",
+                    "parameters" : {}
+                }
+            }
+        },
+        "nvueLaunchMode" : ""
+    },
+    /* 快应用特有相关 */
+    "quickapp" : {},
+    /* 小程序特有相关 */
+    "mp-weixin" : {
+        "appid" : "",
+        "setting" : {
+            "urlCheck" : false
+        },
+        "usingComponents" : true
+    },
+    "mp-alipay" : {
+        "usingComponents" : true
+    },
+    "mp-baidu" : {
+        "usingComponents" : true
+    },
+    "mp-toutiao" : {
+        "usingComponents" : true
+    },
+    "h5" : {
+        "devServer" : {
+            "port" : 8000,
+            "disableHostCheck" : true,
+            "proxy" : {
+                "/api" : {
+                    "target" : "http://tougao.goodclouds.cn", // 需要跨域的域名
+                    "changeOrigin" : true,
+                    "secure" : false,
+                    "pathRewrite" : {
+                        "^/api" : ""
+                    }
+                }
+            }
+        }
+    }
+}

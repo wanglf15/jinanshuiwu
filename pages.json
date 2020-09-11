@@ -1,0 +1,763 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue" 
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+		    "path" : "pages/tabbar/home/startup",
+			"style": {
+				"navigationBarTitleText": "启动页",
+				"app-plus": {
+					"titleNView": false
+				}
+			}
+		},
+        {
+            "path" : "pages/tabbar/home/guide",
+        	"style": {
+        		"navigationBarTitleText": "引导页",
+        		"app-plus": {
+        			"titleNView": false
+        		}
+        	}
+        },
+        {
+        	"path": "pages/tabbar/home/tabbar-3",
+        	"style": {
+        		"navigationBarTitleText": "首页",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				// "enablePullDownRefresh": true,
+        		"app-plus": {
+        			"titleNView": false
+        		},
+				"bounce" : "none"// app 端
+        	}
+        },
+		{
+		    "path": "pages/tabbar/serve/tabbar-1",
+		    "style": {
+		        "navigationBarTitleText": "便民服务",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"enablePullDownRefresh": true,
+		        "app-plus": {
+		            "titleNView": true
+					// "pullToRefresh":{
+					// 	"support": true,
+					// 	"style": "circle",
+					// 	"contentdown": {
+					// 		"caption": "下拉可刷新"
+					// 	},
+					// 	"contentover": {
+					// 		"caption": "释放可刷新"
+					// 	},
+					// 	"contentrefresh": {
+					// 		"caption": "正在刷新"
+					// 	}
+					// }
+		        },
+				"bounce": "none"
+		    }
+		},
+		{
+		    "path": "pages/tabbar/customer/tabbar-2",
+		    "style": {
+		        "navigationBarTitleText": "在线客服",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        }
+		    }
+		},
+		{
+		    "path": "pages/tabbar/video/tabbar-4",
+		    "style": {
+		        "navigationBarTitleText": "视频专题",
+				"navigationBarBackgroundColor": "#00919f",
+				"disableScroll": true,
+				"enablePullDownRefresh": false,
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none"// app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/mine/tabbar-5",
+		    "style": {
+		        "navigationBarTitleText": "我的用水",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": false
+		        },
+				"bounce" : "none" // app 端
+				// "scrollIndicator" : "none" // 不显示滚动条
+		    }
+		},
+		{
+		    "path": "pages/tabbar/mine/editInfo/index",
+		    "style": {
+		        "navigationBarTitleText": "编辑信息",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        }
+		    }
+		},
+		{
+		    "path": "pages/toutiao/index",
+		    "style": {
+		        "navigationBarTitleText": "济南水务头条",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": {
+						"buttons": [
+							{
+								"type": "share"
+							}
+						]
+					}
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/notice/index",
+		    "style": {
+		        "navigationBarTitleText": "停水降压通知",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": {
+		            	"buttons": [
+		            		{
+		            			"type": "share"
+		            		}
+		            	]
+		            }
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/news/index",
+		    "style": {
+		        "navigationBarTitleText": "水务快讯",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": {
+		            	"buttons": [
+		            		{
+		            			"type": "share"
+		            		}
+		            	]
+		            }
+		        },
+				"bounce" : "none"// app 端
+		    }
+		},
+		{
+		    "path": "pages/Videotopics/index",
+		    "style": {
+		        "navigationBarTitleText": "视频专题",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": {
+						"buttons": [
+							{
+								"type": "share"
+							}
+						]
+					}
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/Watercharg/index",
+		    "style": {
+		        "navigationBarTitleText": "水费查询",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/Watercharg/fapiao",
+		    "style": {
+		        "navigationBarTitleText": "电子发票自助申领及验证",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/staff/index",
+		    "style": {
+		        "navigationBarTitleText": "员工风采",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": false
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/useWater/index",
+		    "style": {
+		        "navigationBarTitleText": "用水价格",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/informed/index",
+		    "style": {
+		        "navigationBarTitleText": "公告公示",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/serve/yingye/index",
+		    "style": {
+		        "navigationBarTitleText": "营业网点",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": false
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/serve/yingye/detail",
+		    "style": {
+		        "navigationBarTitleText": "营业网点",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/serve/yingye/map",
+		    "style": {
+		        "navigationBarTitleText": "详情",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none"// app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/serve/question/index",
+		    "style": {
+		        "navigationBarTitleText": "常见问题",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": false
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/serve/question/detail",
+		    "style": {
+		        "navigationBarTitleText": "详情",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": false
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/mine/shuihao/index",
+		    "style": {
+		        "navigationBarTitleText": "绑定水号",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": false
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/mine/recode/recode",
+		    "style": {
+		        "navigationBarTitleText": "水费查询",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/mine/pay/pay",
+		    "style": {
+		        "navigationBarTitleText": "我要交费",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/serve/yewu/index",
+		    "style": {
+		        "navigationBarTitleText": "业务办理",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/ad/index",
+		    "style": {
+		        "navigationBarTitleText": "活动",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/zhaocaiInfo/index",
+		    "style": {
+		        "navigationBarTitleText": "招采信息",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": {
+		            	"buttons": [
+		            		{
+		            			"type": "share"
+		            		}
+		            	]
+		            }
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/newsflash/index",
+		    "style": {
+		        "navigationBarTitleText": "企业快讯",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/mine/payment/payment",
+		    "style": {
+		        "navigationBarTitleText": "我的水号",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/mine/Collect/Collect",
+		    "style": {
+		        "navigationBarTitleText": "我的收藏",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none", // app 端
+				"scrollIndicator" : "none" // 不显示滚动条
+		    }
+		},
+		{
+		    "path": "pages/tabbar/mine/zan/zan",
+		    "style": {
+		        "navigationBarTitleText": "我的点赞",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/mine/comment/comment",
+		    "style": {
+		        "navigationBarTitleText": "我的评论",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+		{
+		    "path": "pages/tabbar/mine/registe/registe",
+		    "style": {
+		        "navigationBarTitleText": "注册",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+		        "app-plus": {
+		            "titleNView": true
+		        },
+				"bounce" : "none" // app 端
+		    }
+		},
+        {
+            "path" : "pages/live/live",
+            "style" : {
+				"navigationBarTitleText": "水务直播间",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+        }
+        ,{
+            "path" : "pages/tabbar/mine/drinkingWate/drinkingWate",
+            "style" : {
+				"navigationBarTitleText": "直饮水服务",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+        }
+        ,{
+            "path" : "pages/Recharge/Recharge",
+            "style" : {
+				"navigationBarTitleText": "直饮水预存存值",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+        }
+        ,{
+            "path" : "pages/tabbar/mine/inquiry/inquiry",
+            "style" : {
+				"navigationBarTitleText": "账单详情",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+        }
+        ,{
+            "path" : "pages/tabbar/mine/bindPhone/bindPhone",
+            "style" : {
+				"navigationBarTitleText": "绑定手机号",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+        }
+        ,{
+            "path" : "pages/tabbar/mine/agreement/agreement",
+            "style" : {
+				"navigationBarTitleText": "", //
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+        },
+		{
+		    "path" : "pages/tabbar/mine/drinkingWate/myNumber",
+		    "style" : {
+				"navigationBarTitleText": "我的直饮水号", //
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+		},
+		{
+		    "path" : "pages/tabbar/mine/drinkingWate/publicity",
+		    "style" : {
+				"navigationBarTitleText": "水质公示", //
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+		},
+		{
+		    "path" : "pages/tabbar/mine/drinkingWate/analysis",
+		    "style" : {
+				"navigationBarTitleText": "直饮水用量分析", //
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+		},
+		{
+		    "path" : "pages/tabbar/mine/drinkingWate/brand",
+		    "style" : {
+				"navigationBarTitleText": "品牌文化", //
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+		},
+		{
+		    "path" : "pages/tabbar/mine/drinkingWate/commonSense",
+		    "style" : {
+				"navigationBarTitleText": "用水常识", //
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+		},
+		{
+		    "path" : "pages/tabbar/mine/drinkingWate/senseDetail",
+		    "style" : {
+				"navigationBarTitleText": "详情", //
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+		},
+		{
+		    "path" : "pages/mudulive/index",
+		    "style" : {
+				"navigationBarTitleText": "水务直播间",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+		},
+		{
+		    "path" : "pages/tabbar/mine/pay/wxpay",
+		    "style" : {
+				"navigationBarTitleText": "生活缴费",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+		},
+		{
+		    "path" : "pages/tabbar/mine/newsSetting/index",
+		    "style" : {
+				"navigationBarTitleText": "新闻管理",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+		}
+        ,{
+            "path" : "pages/tabbar/mine/newsSetting/addNews",
+            "style" : {
+				"navigationBarTitleText": "发布新闻",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+        },
+		{
+		    "path" : "pages/tabbar/mine/drinkingWate/record",
+		    "style" : {
+				"navigationBarTitleText": "充值记录",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+		},
+		{
+		    "path" : "pages/tabbar/mine/newsSetting/setNews",
+		    "style" : {
+				"navigationBarTitleText": "新闻设置",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+		}
+        ,{
+            "path" : "pages/business/business",
+            "style" : {
+				"navigationBarTitleText": "优化营商环境",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+        }
+        ,{
+            "path" : "pages/business/others",
+            "style" : {
+				"navigationBarTitleText": "优化营商环境",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+        }
+        ,{
+            "path" : "pages/business/more",
+            "style" : {
+				"navigationBarTitleText": "优化营商环境",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+        }
+        ,{
+            "path" : "pages/tabbar/mine/monitor/monitor",
+            "style" : {
+				"navigationBarTitleText": "远传监测",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#00919f",
+				"app-plus": {
+				    "titleNView": true
+				},
+				"bounce" : "none" // app 端
+			}
+        }
+    ],
+    "tabBar": {
+        "color": "#888888",
+    	"fontSize":"12px",
+        "selectedColor": "#00919F",
+        "borderStyle": "black",
+        "backgroundColor": "#FFFFFF",
+		"midButton": {
+			"iconPath": "static/img/tab/zaixiankefu.png",
+			"text": "在线客服",
+			"height": "47px"
+		},
+        "list": [
+            {
+                "pagePath": "pages/tabbar/home/tabbar-3",
+                "iconPath": "static/img/tab/shouye.png",
+                "selectedIconPath": "static/img/tab/shouye-selected.png",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/tabbar/serve/tabbar-1",
+                "iconPath": "static/img/tab/bianminfuwu.png",
+                "selectedIconPath": "static/img/tab/bianminfuwu-selected.png",
+                "text": "便民服务"
+            },
+            {
+                "pagePath": "pages/tabbar/video/tabbar-4",
+                "iconPath": "static/img/tab/shipin.png",
+                "selectedIconPath": "static/img/tab/shipin-selected.png",
+                "text": "视频专题"
+            },
+    		{
+    		    "pagePath": "pages/tabbar/mine/tabbar-5",
+    		    "iconPath": "static/img/tab/wode.png",
+    		    "selectedIconPath": "static/img/tab/wode-selected.png",
+    		    "text": "我的用水"
+    		}
+        ]
+    },
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
