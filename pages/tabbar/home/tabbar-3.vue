@@ -55,7 +55,7 @@
 						<swiper class="swiper" :style="{height: activeHeight}" current="0">
 							<swiper-item v-for="(swiperItem, ind) in Notice" :key="ind" v-if="len > 0">
 								<view class="swiper-item" v-for="(item, index) in swiperItem" :key="item.id" @click="jumpDetail(item.id)">
-									<span><em>{{ item.title }}</em><i>{{ item.action_time_text }}</i></span>
+									<span><em>{{ item.title }}</em><i>{{ item.action_time_text.slice(5) }}</i></span>
 								</view>
 								<view @click="lookMore(0)" class="swiper-item" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 0 40rpx;">
 									<text style="font-size: 32rpx; color: #999999;">查看更多</text><u-icon name="arrow-right" color="#cccccc" size="28"></u-icon>
@@ -87,7 +87,7 @@
 						<swiper class="swiper" :style="{height: activeHeight1}" :current="0">
 							<swiper-item v-for="(v,k) in RecruitmentList" :key="k">
 								<view class="swiper-item" v-for="(Recruititem, Recruitindex) in v" :key="Recruitindex" @click="pageTozhaocai(Recruititem.id)">
-									<span><em>{{ Recruititem.title }}</em><i>{{ Recruititem.update_time_text }}</i></span>
+									<span><em>{{ Recruititem.title }}</em><i>{{ Recruititem.update_time_text.slice(5) }}</i></span>
 								</view>
 								<view @click="lookMore(2)" class="swiper-item" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 0 40rpx;">
 									<text style="font-size: 32rpx; color: #999999;">查看更多</text><u-icon name="arrow-right" color="#999999" size="28"></u-icon>
@@ -722,8 +722,7 @@
 			// 获取停水公告列表
 			async getNoticeList() {
 				await this.$u.get('api/notice/gettsNoticeV1').then(res => {
-					let L = res.length
-					
+					let L = res.length;
 					this.len = L;
 					if (L == 1) {
 						this.activeHeight = 72 * res[0].length + 72 + 'rpx'
@@ -731,12 +730,6 @@
 					if (L == 0) {
 						this.activeHeight = '218rpx'
 					}
-					res.map((el, index) => {
-						const data = res[index]
-						data.map((els, i) => {
-							data[i].action_time_text = els.action_time_text.slice(5)
-						})
-					})
 					this.Notice = res
 				})
 			},
@@ -763,9 +756,6 @@
 			// 获取招采信息列表
 			async getRecruitmentList() {
 				await this.$u.get('/api/app/getMassage').then(res => {
-					res.map((el, index) => {
-						res[index].update_time_text = el.update_time_text.slice(5)
-					})
 					let Len2 = res.length
 					this.len2 = Len2
 					if (Len2 == 0) {

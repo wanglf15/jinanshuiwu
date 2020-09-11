@@ -77,6 +77,11 @@
 			</view>
 			<editor id="editor" @ready="onEditorReady" @statusChange="onStatusChange" @input="contentInp" class="ql-container" show-img-toolbar show-img-resize show-img-size placeholder="开始输入..."></editor>
 		</view>
+		<view class="item" style="margin-top: 40rpx;">
+			<text>落款</text>
+			<u-input v-model="signText" type="text" border placeholder="请输入落款" />
+		</view>
+		
 		<view class="pubNews">
 			<u-button @click="pubNews">{{ type ? '发布新闻' : '保存'}}</u-button>
 		</view>
@@ -123,7 +128,8 @@
 				content: '',
 				type: true,
 				Id: "",
-				images: ""
+				images: "",
+				signText: ""
 			}
 		},
 		onLoad(option) {
@@ -182,7 +188,8 @@
 							images: this.images,
 							content: 
 								{
-									content: this.content
+									content: this.content,
+									sign: this.signText
 								}
 							
 						}
@@ -246,7 +253,8 @@
 							images: this.images,
 							content: 
 								{
-									content: this.content
+									content: this.content,
+									sign: this.signText
 								}
 							
 						}
@@ -277,8 +285,10 @@
 			// 获取新闻详情
 			async getNewsDetail (id) {
 				await this.$u.get('/api/news/getNewsById?id=' + this.Id).then(res => {
+					console.log(res)
 					this.title = res.title
 					this.cover = res.profile
+					this.signText = res.content.sign
 					if (res.type == 0) {
 						this.value = "小图"
 					} else if (res.type == 1) {
@@ -305,6 +315,7 @@
 					}
 					
 					this.content = res.recontent
+					
 				})
 			},
 			uploadChange(e) {

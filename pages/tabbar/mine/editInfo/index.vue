@@ -11,7 +11,7 @@
 			</view>
 			<view class="uni-form-item uni-column" style="margin-top: 30rpx;">
 				<text>头像</text>
-				<u-upload ref="uUpload" @on-remove="onRemove" :action="action" :show-progress="false" :file-list="fileList" :max-count="1" @on-success="uploadImg"></u-upload>
+				<u-upload ref="uUpload" :size-type="sizeType" @on-remove="onRemove" :action="action" :show-progress="false" :file-list="fileList" :max-count="1" @on-success="uploadImg"></u-upload>
 			</view>
 		</view>
 		<view style="width: 100%; height: 30rpx; background-color: #EEEEEE; margin: 30rpx 0;"></view>
@@ -52,7 +52,8 @@
 				wxNickname: '',
 				appleId: '',
 				isApple: false,
-				isWX: false
+				isWX: false,
+				sizeType:['compressed']
 			}
 		},
 		onLoad(option) {

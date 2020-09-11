@@ -22,12 +22,8 @@
 				</view>
 			</view>
 			<view>
-				<jyf-parser class="content" :html="neirong" ref="article" autopause @parse="parseready($event)" selectable domain="https://www.jnwater.com.cn" lazy-load use-cache></jyf-parser>
-				<view class="signup">
-					<text>编辑:李军</text>
-					<text>摄影:关帝庙</text>
-					<text>转载:的发给你</text>
-				</view>
+				<jyf-parser class="content" :html="neirong" :tag-style="style" ref="article" autopause @parse="parseready($event)" selectable domain="https://www.jnwater.com.cn" lazy-load use-cache></jyf-parser>
+				<view class="signup">{{ signText }}</view>
 			</view>
 			<view class="operation">
 				<view class="read">
@@ -177,7 +173,11 @@
 					nomore: '没有更多了'
 				},
 				scrollTop: 0,
-				isanimate: false
+				isanimate: false,
+				signText: '',
+				style: {
+					p: 'font-size:36rpx; font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif;',
+				}
 			}
 		},
 		onLoad(option) {
@@ -208,7 +208,6 @@
 		methods: {
 			// 富文本解析完成给视频加封面
 			parseready(e) {
-				// console.log(e)
 				e.map((el,index) => {
 					el.children.map((v, k) => {
 						if (v.name == 'video') {
@@ -218,9 +217,6 @@
 						}
 					})
 				})
-				// if (e[0].children[0].name == 'video' && e[0].children[0].attrs.poster.indexOf('http') == '-1') {
-				// 	e[0].children[0].attrs.poster = this.$Url + e[0].children[0].attrs.poster
-				// }
 			},
 			inp() {
 				this.comment = true 
@@ -255,6 +251,7 @@
 					this.num = res.zan
 					this.shareUrl = this.$Url + res.wx_img
 					this.profile = res.profile
+					this.signText = res.content.sign
 					this.getBestRead()
 				})
 			},
@@ -508,13 +505,9 @@
 		// background-color: #f9f9f9;
 		padding: 30rpx;
 		.signup{
-			display: flex;
-			flex-direction: column;
-			align-items: flex-end;
-			font-size: 36rpx;
-			line-height: 60rpx;
-			padding-right: 20rpx;
+			font-size: 32rpx;
 			margin-bottom: 60rpx;
+			text-align: right;
 		}
 		.title {
 			display: block;

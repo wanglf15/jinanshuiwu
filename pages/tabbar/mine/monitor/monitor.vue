@@ -14,9 +14,11 @@
 			<u-button class="custom-style">查询</u-button>
 		</view>
 		<view class="tabs">
-			<view class="tabItem" @click="tabClick(index)" v-for="(item, index) in tabList" :key="index" :class="current === index ? 'active' : ''">
+			<!--  :class="current === index ? 'active' : ''"  -->
+			<view class="tabItem" @click="tabClick(index, $event)" v-for="(item, index) in tabList" :key="index" :style="{color: current == index+1 ? '#fff': '#000'}">
 				<text>{{ item.name }}</text>
 			</view>
+			<view class="active" :style="{'transform': 'translateX(' + styleObject + 'rpx' + ')'}"></view>
 		</view>
 		<view class="dayTable">
 			<u-table>
@@ -143,7 +145,8 @@
 				endTimeshow: false,
 				startTime: '',
 				endTime: '',
-				current: 0,
+				current: 1,
+				styleObject: '110',
 				tabList: [
 					{
 						name: '日汇总'
@@ -216,8 +219,11 @@
 			confirmEndTime (e) {
 				this.endTime = e.year + '-' + e.month + '-' + e.day
 			},
-			tabClick (index) {
-				this.current = index
+			tabClick (index,e) {
+				// console.log(e)
+				this.current = index +1
+				this.styleObject = 110 + 176 * index+1
+				
 				if (index == 0) {
 					this.dayTable = this.newdayTable
 				} else if (index == 1) {
@@ -267,7 +273,7 @@
 		width: 100%;
 		border-top: 1px solid #EEEEEE;
 		border-bottom: 1px solid #EEEEEE;
-		margin: 40rpx 0;
+		margin: 40rpx auto;
 		height: 100rpx;
 		font-size: 32rpx;
 		.tabItem {
@@ -280,24 +286,31 @@
 			z-index: 999;
 		}
 		.active {
-			color: #FFFFFF;
-		}
-		.active::after {
-			content: '';
 			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
+			left: 0;
+			color: #FFFFFF;
+			background-color: $mytheme-color;
 			width: 176rpx;
 			height: 100rpx;
-			background-color: $mytheme-color;
-			animation: mymove 0.2s linear;
-			z-index: -1;
+			// transform: translateX(110rpx);
+			transition: all 270ms ease-in-out, width 270ms ease-in-out;
 		}
-		@keyframes mymove {
-			from {width: 0; height: 0}
-			to {width: 176rpx; height: 100%}
-		}
+		// .active::after {
+		// 	content: '';
+		// 	position: absolute;
+		// 	top: 50%;
+		// 	left: 50%;
+		// 	transform: translate(-50%, -50%);
+		// 	width: 176rpx;
+		// 	height: 100rpx;
+		// 	background-color: $mytheme-color;
+		// 	animation: mymove 0.2s linear;
+		// 	z-index: -1;
+		// }
+		// @keyframes mymove {
+		// 	from {width: 0; height: 0}
+		// 	to {width: 176rpx; height: 100%}
+		// }
 	}
 	.dayTable {
 		width: 100%;

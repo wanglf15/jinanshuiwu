@@ -43,6 +43,7 @@
                     "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
                     "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
@@ -79,7 +80,8 @@
                     "NSPhotoLibraryUsageDescription" : "上传用户头像",
                     "NSPhotoLibraryAddUsageDescription" : "保存截图",
                     "NSLocationWhenInUseUsageDescription" : "获取当地天气和营业网点位置",
-                    "NSLocationAlwaysAndWhenInUseUsageDescription" : "获取当地天气和营业网点位置"
+                    "NSLocationAlwaysAndWhenInUseUsageDescription" : "获取当地天气和营业网点位置",
+                    "NSCameraUsageDescription" : "上传用户头像"
                 }
             },
             /* SDK配置 */

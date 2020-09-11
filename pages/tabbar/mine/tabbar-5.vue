@@ -40,8 +40,9 @@
 		<view class="login" v-else>
 			<view class="users" @click="editInfo">
 				<view class="Usernick">
-					<image :src="userInfo.userSrc" mode="aspectFill" v-if="userInfo.userSrc"></image>
-					<image src="../../../static/img/img/wx_thumb.png" mode="" v-else></image>
+					<u-avatar :src="userInfo.userSrc" mode="square" size="120"></u-avatar>
+					<!-- <image :src="userInfo.userSrc" mode="aspectFill" v-if="userInfo.userSrc"></image>
+					<image src="../../../static/img/img/wx_thumb.png" mode="" v-else></image> -->
 					<view>
 						<text>{{ userInfo.nickname }}</text>
 					</view>
